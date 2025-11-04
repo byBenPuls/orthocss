@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OrthoCSS</title>
+  <link rel="stylesheet" href="scss-dark.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>
+  <center>
+    <h1>OrthoCSS</h1>
+    <p>Clean, Minimalist, Systematic CSS Framework</p>
+  </center>
+  <nav>
+    <ul>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#elements">HTML Elements</a></li>
+      <li><a href="#get-started">Get Started</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section id="intro">
+  <h2>Introduction</h2>
+  <p>
+    OrthoCSS is a <strong>minimalist CSS framework</strong> designed to style all standard HTML elements elegantly and consistently.
+    Its name comes from the Greek word <em>orthos</em> — meaning <strong>correct, straight, precise</strong>.
+    The framework is inspired by the <a href="https://github.com/yegor256/tacit" target="_blank">Tacit framework</a> by Egor Bugaenko.
+  </p>
+  <p>
+    OrthoCSS supports both <strong>light and dark themes</strong>, making it versatile for different design needs.
+    It is <strong>JavaScript-free</strong> and encourages <strong>avoiding CSS classes</strong> entirely: 
+    you can create fully styled pages using only standard HTML elements. 
+    This approach removes unnecessary complexity and lets you focus on content and readability.
+  </p>
+  <blockquote>
+    “Precision in design is the foundation of readability and elegance.”
+  </blockquote>
+</section>
+  <section id="elements">
+    <h2>HTML Elements Showcase</h2>
+    <h3>Headings</h3>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <h3>Paragraphs & Text</h3>
+    <p>
+      This is a paragraph demonstrating <strong>strong text</strong>, <em>emphasis</em>, 
+      <u>underlined text</u>, <mark>highlighted text</mark>, and a <abbr data-title="HyperText Markup Language">HTML</abbr> abbreviation.
+    </p>
+
+    <h3>Lists</h3>
+    <p>Unordered list:</p>
+    <ul>
+      <li>Item One</li>
+      <li>Item Two</li>
+      <li>Item Three</li>
+    </ul>
+    <p>Ordered list:</p>
+    <ol>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ol>
+
+    <p>Definition list:</p>
+    <dl>
+      <dt>Term One</dt>
+      <dd>Description for term one.</dd>
+      <dt>Term Two</dt>
+      <dd>Description for term two.</dd>
+    </dl>
+
+    <h3>Tables</h3>
+    <table>
+      <thead>
+        <tr>
+
+          <th>Feature</th>
+          <th>Description</th>
+
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>Headings</td>
+          <td>All H1–H6 tags styled consistently</td>
+          <td>Done</td>
+        </tr>
+        <tr>
+          <td>Paragraphs</td>
+          <td>Supports strong, em, u, mark, abbr, and more</td>
+          <td>Done</td>
+        </tr>
+        <tr>
+          <td>Tables</td>
+          <td>Striped, responsive, easy to read</td>
+
+          <td>Done</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Forms</h3>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Your name">
+
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="you@example.com">
+
+      <label for="subject">Subject:</label>
+      <select id="subject">
+        <option>General Inquiry</option>
+
+        <option>Feedback</option>
+        <option>Support</option>
+      </select>
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="4" placeholder="Type your message here"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <h3>Code & Preformatted Text</h3>
+    <p>Inline code example: <code>body { margin: 0; }</code></p>
+    <pre><code>
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+greet("OrthoCSS");
+    </code></pre>
+
+    <h3>Blockquote</h3>
+    <blockquote>
+      “Design is intelligence made visible.” — Alina Wheeler
+    </blockquote>
+
+    <h3>Images</h3>
+    <h3>Horizontal Rule</h3>
+    <hr>
+    <h3>Details & Summary</h3>
+    <details>
+      <summary>Click to see details</summary>
+      <p>OrthoCSS aims to provide clean default styles for all standard HTML elements.</p>
+    </details>
+
+  <h3>Checkboxes & Radio Buttons</h2>
+
+  <form>
+    <p>Select your favorite languages:</p>
+    <label>
+      <input type="checkbox" name="lang" value="python"> Python
+    </label>
+    <label>
+      <input type="checkbox" name="lang" value="erlang"> Erlang
+    </label>
+    <label>
+      <input type="checkbox" name="lang" value="elixir"> Elixir
+    </label>
+    <p>Choose your experience level:</p>
+    <label>
+      <input type="radio" name="level" value="beginner"> Beginner
+    </label>
+    <label>
+      <input type="radio" name="level" value="intermediate"> Intermediate
+    </label>
+    <label>
+      <input type="radio" name="level" value="advanced"> Advanced
+    </label>
+  </form>
+  </section>
+  <section id="get-started">
+    <h2>How to get started</h3>
+    <p>There are three simple ways to use OrthoCSS:</p>
+    <ol>
+      <li>
+        <strong>Auto theme:</strong>
+        <pre><code>&lt;link rel="stylesheet" href="https://orthocss.dev/orthocss-auto.css"&gt;</code></pre>
+      </li>
+      <li>
+        <strong>Light theme:</strong>
+        <pre><code>&lt;link rel="stylesheet" href="https://orthocss.dev/orthocss-light.css"&gt;</code></pre>
+      </li>
+      <li>
+        <strong>Dark theme:</strong>
+        <pre><code>&lt;link rel="stylesheet" href="https://orthocss.dev/orthocss-dark.css"&gt;</code></pre>
+      </li>
+    </ol>
+  </section>
+</main>
+<footer>
+  <p style="text-align:center;">
+    &copy; 2025 OrthoCSS
+  </p>
+  <p>Powered by <a href="https://github.com/byBenPuls/orthocss">OrthoCSS</a></p>
+</footer>
+</body>
+</html>
