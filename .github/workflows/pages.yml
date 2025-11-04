@@ -1,0 +1,43 @@
+name: Deploy CSS to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build SCSS
+        run: |
+          mkdir -p dist
+          npx sass scss/light.scss dist/light.css --style=compressed
+          npx sass scss/dark.scss dist/dark.css --style=compressed
+          npx sass scss/auto.scss dist/auto.css --style=compressed
+
+      - name: Prepare GitHub Pages content
+        run: |
+          mkdir -p pages
+          cp -r dist/* pages/
+          cp index.html pages/
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          publish_dir: ./pages
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
