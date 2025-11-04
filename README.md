@@ -53,6 +53,6 @@ For a bright/light interface:
 ### 3. Dark Theme
 For a dark interface:
 
-```
+```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@v1.0.0/dist/dark.css">
 ```
