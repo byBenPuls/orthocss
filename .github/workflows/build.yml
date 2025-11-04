@@ -33,6 +33,8 @@ jobs:
           asset_path: dist/light.css
           asset_name: light.css
           asset_content_type: text/css
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload dark.css
         uses: actions/upload-release-asset@v1
