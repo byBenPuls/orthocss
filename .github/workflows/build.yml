@@ -43,6 +43,8 @@ jobs:
           asset_path: dist/dark.css
           asset_name: dark.css
           asset_content_type: text/css
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Upload auto.css
         uses: actions/upload-release-asset@v1
@@ -51,6 +53,8 @@ jobs:
           asset_path: dist/auto.css
           asset_name: auto.css
           asset_content_type: text/css
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Update README version
         run: |
