@@ -1,5 +1,4 @@
 name: Build & Publish CSS
-
 on:
   release:
     types: [published]
@@ -11,6 +10,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
+
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -28,22 +28,26 @@ jobs:
           npx sass scss/dark.scss dist/dark.css --style=compressed
           npx sass scss/auto.scss dist/auto.css --style=compressed
 
-      - name: Update README version
-        run: |
-          latest_tag=$(echo "${GITHUB_REF_NAME}" | sed 's/^v//')
-          sed -E -i "s/orthocss@[0-9]+\.[0-9]+\.[0-9]+/orthocss@${latest_tag}/g" README.md
-
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Commit dist and README
+      - name: Push dist to release branch
         run: |
-          release_branch="${GITHUB_REF_NAME}"
-          git checkout $release_branch
+          release_branch="release/${GITHUB_REF_NAME#refs/tags/}"
+          git checkout -b $release_branch
           git add -f dist
-          git add README.md
-          git commit -m "Build CSS and update README for release $release_branch" || echo "No changes to commit"
+          git commit -m "Add compiled CSS for release $GITHUB_REF_NAME"
           git push origin $release_branch
+
+      - name: Update README in master
+        run: |
+          git fetch origin master
+          git checkout master
+          latest_tag="${GITHUB_REF_NAME#refs/tags/}"
+          sed -E -i "s/orthocss@[0-9]+\.[0-9]+\.[0-9]+/orthocss@${latest_tag}/g" README.md
+          git add README.md
+          git commit -m "Update CDN version in README to ${latest_tag}" || echo "No changes to commit"
+          git push origin master
