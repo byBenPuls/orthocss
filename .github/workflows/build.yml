@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -31,12 +33,16 @@ jobs:
           latest_tag=$(echo "${GITHUB_REF_NAME}" | sed 's/^v//')
           sed -E -i "s/orthocss@[0-9]+\.[0-9]+\.[0-9]+/orthocss@${latest_tag}/g" README.md
 
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          sign-commits: true
-          commit-message: 'Update CDN version in README'
-          delete-branch: true
-          title: 'Update CDN version in README'
-          branch: update-readme
-          base: master
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit dist and README
+        run: |
+          release_branch="${GITHUB_REF_NAME}"
+          git checkout $release_branch
+          git add -f dist
+          git add README.md
+          git commit -m "Build CSS and update README for release $release_branch" || echo "No changes to commit"
+          git push origin $release_branch
