@@ -26,36 +26,6 @@ jobs:
           npx sass scss/dark.scss dist/dark.css --style=compressed
           npx sass scss/auto.scss dist/auto.css --style=compressed
 
-      - name: Upload light.css
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/light.css
-          asset_name: light.css
-          asset_content_type: text/css
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-      - name: Upload dark.css
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/dark.css
-          asset_name: dark.css
-          asset_content_type: text/css
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-      - name: Upload auto.css
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: dist/auto.css
-          asset_name: auto.css
-          asset_content_type: text/css
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
       - name: Update README version
         run: |
           latest_tag=$(echo "${GITHUB_REF_NAME}" | sed 's/^v//')
