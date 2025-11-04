@@ -40,19 +40,19 @@ There are **three themes** you can use:
 Automatically switches based on the user's system preference:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@v1.0.0/dist/auto.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@1.0.0/dist/auto.css">
 ```
 
 ### 2. Light Theme
 For a bright/light interface:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@v1.0.0/dist/light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@1.0.0/dist/light.css">
 ```
 
 ### 3. Dark Theme
 For a dark interface:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@v1.0.0/dist/dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/byBenPuls/orthocss@1.0.0/dist/dark.css">
 ```
